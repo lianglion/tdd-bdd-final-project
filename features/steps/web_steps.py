@@ -119,6 +119,15 @@ def step_impl(context, name):
     )
     assert(found)
 
+@then('I should see the message "{message}"')
+def step_impl(context, message):
+    found = WebDriverWait(context.driver, context.wait_seconds).until(
+        expected_conditions.text_to_be_present_in_element(
+            (By.ID, 'flash_message'),
+            message
+        )
+    )
+    assert(found)
 ##################################################################
 # This code works because of the following naming convention:
 # The id field for text input in the html is the element name
@@ -136,6 +145,11 @@ def step_impl(context, text_string, element_name):
         )
     )
     assert(found)
+
+@then('I should not see "{name}" in the results')
+def step_impl(context, name):
+    element = context.driver.find_element(By.ID, 'search_results')
+    assert(name not in element.text)
 
 @when('I change "{element_name}" to "{text_string}"')
 def step_impl(context, element_name, text_string):
