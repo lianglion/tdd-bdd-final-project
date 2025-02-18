@@ -107,6 +107,7 @@ class TestProductModel(unittest.TestCase):
     def test_read_a_product(self):
         """It should Read a Product"""
         product = ProductFactory()
+        logging.debug(product)
         product.id = None
         product.create()
         self.assertIsNotNone(product.id)
@@ -120,8 +121,10 @@ class TestProductModel(unittest.TestCase):
     def test_update_a_product(self):
         """It should Update a Product"""
         product = ProductFactory()
+        logging.debug(product)
         product.id = None
         product.create()
+        logging.debug(product)
         self.assertIsNotNone(product.id)
         # Change it an save it
         product.description = "testing"
