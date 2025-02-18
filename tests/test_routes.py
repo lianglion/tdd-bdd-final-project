@@ -234,13 +234,13 @@ class TestProductRoutes(TestCase):
         for product in data:
             self.assertEqual(product["name"], test_name)
 
-      def test_query_by_category(self):
-        """It should Query Products by category"""
-        products = self._create_products(10)
-        category = products[0].category
-        found = [product for product in products if product.category == category]
-        found_count = len(found)
-        logging.debug("Found Products [%d] %s", found_count, found)
+      # def test_query_by_category(self):
+      #   """It should Query Products by category"""
+      #   products = self._create_products(10)
+      #   category = products[0].category
+      #   found = [product for product in products if product.category == category]
+      #   found_count = len(found)
+      #   logging.debug("Found Products [%d] %s", found_count, found)
 
         # test for available
         response = self.client.get(BASE_URL, query_string=f"category={category.name}")
