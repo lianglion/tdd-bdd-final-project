@@ -117,6 +117,7 @@ def step_impl(context, name):
             name
         )
     )
+    assert(found)
 
 ##################################################################
 # This code works because of the following naming convention:
